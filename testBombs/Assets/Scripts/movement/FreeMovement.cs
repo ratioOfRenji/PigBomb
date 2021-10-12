@@ -47,6 +47,18 @@ public class FreeMovement : MonoBehaviour
     private bool left;
     private bool down;
     private bool right;
+
+    [SerializeField]
+    private Sprite front;
+    [SerializeField]
+    private Sprite back;
+    [SerializeField]
+    private Sprite _right;
+    [SerializeField]
+    private Sprite _left;
+    [SerializeField]
+    private GameObject playerSprite;
+
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -97,28 +109,28 @@ public class FreeMovement : MonoBehaviour
             }
         }
 
-        //isMovin = (xInput != 0 || yInput != 0);
-        //if(isMovin)
-        //{
-        //    move(xInput, yInput);
-        //}
+       
     }
 
     public void UpPointerUp()
     {
         up = true;
+        playerSprite.GetComponent<SpriteRenderer>().sprite = back;
     }
     public void LeftPointerUp()
     {
         left = true;
+        playerSprite.GetComponent<SpriteRenderer>().sprite = _left;
     }
     public void DownPointerUp()
     {
         down = true;
+        playerSprite.GetComponent<SpriteRenderer>().sprite = front;
     }
     public void RightPointerUp()
     {
         right = true;
+        playerSprite.GetComponent<SpriteRenderer>().sprite = _right;
     }
 
     public void UpPointerDown()

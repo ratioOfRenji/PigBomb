@@ -6,7 +6,7 @@ public class RadomAi : MonoBehaviour
 {
     int stepCount = 0;
     Vector3 _direction;
-    float stepSize = 45;
+    
     //
     private float xInput, yInput;
     public int speed = 5, collisionDistance = 1;
@@ -15,6 +15,18 @@ public class RadomAi : MonoBehaviour
     private int choseDirection;
     Vector3 currentPos;
    public float distance;
+
+
+    [SerializeField]
+    private Sprite front;
+    [SerializeField]
+    private Sprite back;
+    [SerializeField]
+    private Sprite _right;
+    [SerializeField]
+    private Sprite _left;
+    [SerializeField]
+    private GameObject playerSprite;
     void Start()
     {
         // currentPos = new Vector3 (150, 0,0);
@@ -40,13 +52,14 @@ public class RadomAi : MonoBehaviour
         {
             ChangeDirection();
             
-        }
+        } 
+        currentPos = transform.position;
         // transform.Translate(_direction * stepSize * Time.deltaTime);
         isMovin = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.2f);
         stepCount--;
         isMovin = false;
-        currentPos = transform.position;
+       
         StartCoroutine(patrol());
         //if(stepCount == 0)
         //{
@@ -82,18 +95,22 @@ public class RadomAi : MonoBehaviour
             if (choseDirection == 1)
             {
                 _direction = new Vector3(0.1f, 1, 0);
-            }
+            playerSprite.GetComponent<SpriteRenderer>().sprite = back;
+        }
             if (choseDirection == 2)
             {
                 _direction = Vector3.left;
-            }
+            playerSprite.GetComponent<SpriteRenderer>().sprite = _left;
+        }
             if (choseDirection == 3)
             {
                 _direction = new Vector3(-0.1f, -1, 0);
-            }
+            playerSprite.GetComponent<SpriteRenderer>().sprite = front;
+        }
             if (choseDirection == 4)
             {
                 _direction = Vector3.right;
-            }
+            playerSprite.GetComponent<SpriteRenderer>().sprite = _right;
+        }
     }
 }

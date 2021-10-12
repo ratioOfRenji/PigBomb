@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerPos
   - Bomb
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
